@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tableStack">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TableStack</title>
+  <!-- Google Font - Open Sans -->
+  <link async href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+
+  <!-- Bootstrap CDN 4.0.0 -->
+  
+  <link rel="stylesheet" async href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"
+  />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <!-- Angular CDN 1.6.5 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+
+  <!-- Angular UI Router CDN 0.4.2 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+</head>
+
+<body>
+  <div class="navBarBG">
+    <div class="wrapper">
+      <div class="nav-buttons-left col-md-6">
+        <img class="site-logo" src="./images/background.jpg" ui-sref="home">
+      </div>
+      <div class="nav-buttons-right col-md-6">
+        <ol>
+          <li class="navItem">
+            <a ui-sref="userCreate">SIGN UP</a>
+          </li>
+          <li class="navItem">
+            <a ui-sref="login">LOGIN</a>
+          </li>
+          <li class="navItem">
+            <a ui-sref="user">MY PROFILE</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div ui-view></div>
+
+  <!-- Modules -->
+  <script type="text/javascript" src="./app.js"></script>
+
+  <!-- Services -->
+  <script type="text/javascript" src="./services/userService.js"></script>
+  <script type="text/javascript" src="./services/reservationSerivce.js"></script>
+
+  <!-- Controllers -->
+  <script type="text/javascript" src="./controllers/userController.js"></script>
+  <script type="text/javascript" src="./controllers/reservationController.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+
+<div class="container">
+  <h1 class="text-center">{{ heading }}</h1>
+
+  <div class="signup-wrapper">
+    <div class="signup-form">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" class="form-control" placeholder="Will Smith" ng-model="user.name">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" placeholder="will@jiggywithit.com" ng-model="user.email">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" ng-model="user.password">
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" class="form-control" ng-model="user.confirmPassword">
+      </div>
+      <p ng-show="errorMessage" class="red-text">It looks like you didn't fill out the entire form correctly!</p>
+
+      <button class="btn btn-primary btn-lg pull-right" ng-show="submitButton" ng-click="addUser()">Sign Up</button>      
+
+      <a ng-show="!submitButton" class="text-center" ui-sref="login">Already have an account?</a>
+    </div>
+  </div>
+
+</div>

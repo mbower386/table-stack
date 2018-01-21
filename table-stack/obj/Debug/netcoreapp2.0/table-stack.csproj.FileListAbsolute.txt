@@ -1,0 +1,10 @@
+/Users/matthewbower/Desktop/table-stack/table-stack/bin/Debug/netcoreapp2.0/table-stack.deps.json
+/Users/matthewbower/Desktop/table-stack/table-stack/bin/Debug/netcoreapp2.0/table-stack.runtimeconfig.json
+/Users/matthewbower/Desktop/table-stack/table-stack/bin/Debug/netcoreapp2.0/table-stack.runtimeconfig.dev.json
+/Users/matthewbower/Desktop/table-stack/table-stack/bin/Debug/netcoreapp2.0/table-stack.dll
+/Users/matthewbower/Desktop/table-stack/table-stack/bin/Debug/netcoreapp2.0/table-stack.pdb
+/Users/matthewbower/Desktop/table-stack/table-stack/obj/Debug/netcoreapp2.0/table-stack.csproj.CoreCompileInputs.cache
+/Users/matthewbower/Desktop/table-stack/table-stack/obj/Debug/netcoreapp2.0/table-stack.AssemblyInfoInputs.cache
+/Users/matthewbower/Desktop/table-stack/table-stack/obj/Debug/netcoreapp2.0/table-stack.AssemblyInfo.cs
+/Users/matthewbower/Desktop/table-stack/table-stack/obj/Debug/netcoreapp2.0/table-stack.dll
+/Users/matthewbower/Desktop/table-stack/table-stack/obj/Debug/netcoreapp2.0/table-stack.pdb
