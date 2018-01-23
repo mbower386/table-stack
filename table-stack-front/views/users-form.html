@@ -1,12 +1,30 @@
-
 <div class="container">
   <h1 class="text-center">{{ heading }}</h1>
 
   <div class="signup-wrapper">
     <div class="signup-form">
+
+      <div class="form-group">
+        <label>Account Type</label>
+        <select name="user-type" class="form-control" placeholder="Choose Account Type" ng-model="user.userType">
+          <option value="Customer" selected>Customer</option>
+          <option value="Restaurant">Restaurant</option>
+        </select>
+      </div>
+
       <div class="form-group">
         <label>Full Name</label>
-        <input type="text" class="form-control" placeholder="Will Smith" ng-model="user.name">
+        <input type="text" class="form-control" placeholder="Will Smith" ng-model="user.userName">
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" class="form-control" placeholder="123-555-1234" ng-model="user.phoneNumber">
+      </div>
+
+      <div class="form-group">
+        <label>ZIP Code</label>
+        <input type="text" class="form-control" placeholder="12345" ng-model="user.zipCode">
       </div>
 
       <div class="form-group">
@@ -25,7 +43,7 @@
       </div>
       <p ng-show="errorMessage" class="red-text">It looks like you didn't fill out the entire form correctly!</p>
 
-      <button class="btn btn-primary btn-lg pull-right" ng-show="submitButton" ng-click="addUser()">Sign Up</button>      
+      <button class="btn btn-primary btn-lg pull-right" ng-show="submitButton" ng-click="addUser()">Sign Up</button>
 
       <a ng-show="!submitButton" class="text-center" ui-sref="login">Already have an account?</a>
     </div>

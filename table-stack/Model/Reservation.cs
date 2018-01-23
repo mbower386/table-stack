@@ -7,7 +7,7 @@ namespace table_stack.Controllers
         [Key]
         public int Id { get; set; }
         public int userId { get; set; }
-
+        public int restaurantId { get; set; }
         public int partySize { get; set; }
         public string dateReserved { get; set; }
     }

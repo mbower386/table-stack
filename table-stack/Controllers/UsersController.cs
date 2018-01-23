@@ -17,7 +17,7 @@ namespace table_stack.Controllers
 
             if (_context.Users.Count () == 0)
             {
-                _context.Users.Add (new User () { Id = 1, firstName = "Matthew", lastName = "Bower", email = "mbower386@gmail.com", password = "password", phoneNumber = "9493386876", zipCode = "92691" });
+                _context.Users.Add (new User () { Id = 1, userType = "customer", restaurantName = "", yelpId = "", userName = "Matthew Bower", email = "mbower386@gmail.com", password = "password", phoneNumber = "9493386876", zipCode = "92691" });
                 _context.SaveChanges ();
             }
         }

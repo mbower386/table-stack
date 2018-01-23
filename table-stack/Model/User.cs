@@ -6,8 +6,10 @@ namespace table_stack.Controllers
     {
         [Key]
         public int Id { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
+        public string userType { get; set;}
+        public string restaurantName { get; set; }
+        public string yelpId { get; set; }
+        public string userName { get; set; }
         public string email { get; set; }
         public string password { get; set; }
         public string phoneNumber { get; set; }

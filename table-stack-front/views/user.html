@@ -1,1 +1,54 @@
+<div class="container">
+  <h1 class="text-center">My Profile</h1>
 
+  <div class="profile-card">
+    <div class="user-info col-md-6">
+      <h3 class="text-center">User Info</h3>
+      <p>
+        <strong>Name: </strong>{{ user.name }}
+      </p>
+      <p>
+        <strong>Email: </strong>{{ user.email }}
+      </p>
+    </div>
+    <div class="user-options col-md-6">
+      <h3 class="text-center">User Options</h3>
+      <div class="user-buttons">
+        <button class="btn btn-info" ui-sref="search">Create Reservation</button>
+        <button class="btn btn-info" ng-click="logout()">Logout</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="user-reservations-container">
+    <h2 class="text-center">My Reservations</h2>
+    <div class="user-reservation-container col-md-4 " ng-repeat="reservation in user.reservationList">
+
+      <div class="user-reservation-header col-md-5">
+        <img class="user-reservation-img" src="{{reservation.Poster}}" alt="{{reservation.Title}}">
+      </div>
+      <div class="user-reservation-body col-md-7">
+        <p class="user-reservation-title truncate-text">
+          <strong>{{reservation.Title}}</strong>
+        </p>
+        <p class="user-reservation-title">
+          <strong>({{reservation.Year}})</strong>
+        </p>
+        <p>
+          <strong>imdbID:</strong> {{reservation.imdbID}}
+        </p>
+        <div class="user-reservation-buttons">
+          <button class="btn btn-primary btn-sm" ng-click="viewUserreservation(reservation.imdbID)">More Info</button>
+        </div>
+        <div class="user-reservation-buttons">
+          <button class="btn btn-danger btn-sm" ng-click="removereservationFromUser(reservation)">Delete reservation</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

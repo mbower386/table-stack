@@ -27,7 +27,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: "./views/user.html",
       controller: "userController"
     })
-    
+
     // Reservations
     .state("reservations", { //INDEX
       url: "/reservations",

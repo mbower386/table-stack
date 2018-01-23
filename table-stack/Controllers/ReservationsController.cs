@@ -19,13 +19,13 @@ namespace table_stack.Controllers
             if (_context.Reservations.Count () == 0)
             {
                 id++;
-                _context.Reservations.Add (new Reservation () { Id = id, userId = 1, partySize = 4, dateReserved = "Thu Jan 18 2018 17:00:00 GMT-0700 (PDT)"});
+                _context.Reservations.Add (new Reservation () { Id = id, userId = 1, restaurantId = 2, partySize = 4, dateReserved = "Thu Jan 18 2018 17:00:00 GMT-0700 (PDT)" });
 
                 id++;
-                _context.Reservations.Add (new Reservation () { Id = id, userId = 1, partySize = 4, dateReserved = "Wed Jan 17 2018 12:00:00 GMT-0700 (PDT)"});
+                _context.Reservations.Add (new Reservation () { Id = id, userId = 1, restaurantId = 3, partySize = 3, dateReserved = "Wed Jan 17 2018 12:00:00 GMT-0700 (PDT)" });
 
                 id++;
-                _context.Reservations.Add (new Reservation () { Id = id, userId = 1, partySize = 4, dateReserved = "Tues Jan 16 2018 09:00:00 GMT-0700 (PDT)"});
+                _context.Reservations.Add (new Reservation () { Id = id, userId = 1, restaurantId = 4, partySize = 2, dateReserved = "Tues Jan 16 2018 09:00:00 GMT-0700 (PDT)" });
 
                 _context.SaveChanges ();
             }
