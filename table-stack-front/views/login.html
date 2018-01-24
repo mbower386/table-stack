@@ -12,7 +12,7 @@
         <label>Password</label>
         <input type="password" class="form-control" ng-model="user.password">
       </div>
-      <p ng-show="loginError" class="red-text">It looks like you didn't fill out the entire form correctly!</p>
+      <p ng-show="loginError" class="red-text">Invalid user email and/or password.  Please try again.</p>
       <button class="btn btn-success btn-lg pull-right" ng-show="submitButton" ng-click="login()">Login</button>
     </div>
   </div>

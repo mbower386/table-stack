@@ -1,21 +1,35 @@
-app.service("userService", function ($state) {
+app.service("userService", function ($state, $http) {
   // Create a users array
   var _users = [];
   var _userId = 0;
   var _currentUser = null;
-  
+  var _reservationList = [];
+  var _userList = [];
+  var loginError = false;
+  var _isLoginValid;
+
   // Create a users constructor
-  var User = function (id, name, email, password, status) {
+  var User = function (id, userType, restaurantName, yelpId, fullName, email, password, phoneNumber, zipCode) {
     this.id = id;
-    this.name = name;
+    this.userType = userType;
+    this.restaurantName = restaurantName;
+    this.yelpId = yelpId;
+    this.fullName = fullName;
     this.email = email;
     this.password = password;
-    this.status = status;
+    this.phoneNumber = phoneNumber;
+    this.zipCode = zipCode;
+    this.reservations = [];
   }
-  // Seed users array with 3 users
-  _users.push(new User(_userId++, "Bob", "bob@gmail.com", "boom", false))
-  _users.push(new User(_userId++, "Sue", "sue@gmail.com", "blam", false))
-  _users.push(new User(_userId++, "Barb", "barb@gmail.com", "stick", false))
+
+  // Get reservation list first
+  $http.get(`http://localhost:5000/api/reservations`)
+    .then(function (response) {
+      console.log(response);
+      _reservationList = response.data;
+    }, function (error) {
+
+    })
 
   // GET all
   this.getUsers = function () {
@@ -45,7 +59,7 @@ app.service("userService", function ($state) {
   this.returnUser = function () {
     return _currentUser;
   }
-  
+
   // CREATE
   this.addUser = function (user) {
     user.id = _userId++
@@ -55,14 +69,24 @@ app.service("userService", function ($state) {
 
   // LOGIN
   this.login = function (user) {
-    for (var i = 0; i < _users.length; i++) {
-      if (_users[i].email == user.email && _users[i].password == user.password) { // checking email and pw
-        _currentUser = _users[i] // setting current user
-        _currentUser.status = true; // setting status to logged in
-        console.log(_currentUser);
+    $http.get(`http://localhost:5000/api/users/login?email=${user.email}&password=${user.password}`)
+      .then(function (response) {
+        console.log(response);
 
-        $state.go("user", { id: _users[i].id }) // navigate to user's profile
-      }
+        _isLoginValid = response.data;
+        checkLogin(_isLoginValid);
+
+      }, function (error) {
+
+      })
+  }
+
+  var checkLogin = function (validLogin) {
+    if (validLogin == "true") {
+      $state.go("user")
+    }
+    else {
+      loginError = true;
     }
   }
 
