@@ -10,52 +10,61 @@
   <link async href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700,800" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-  <!-- jQuery 1.12.0 -->
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <!-- Bootstrap CDN 4.0.0 -->
 
-  <!-- Bootstrap CDN 3.3.7 -->
-
-  <link rel="stylesheet" async href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+  <link rel="stylesheet" async href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"
   />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./css/styles.css">
 
+  <!-- Custom styles for the sign in page -->
+  <link href="signin.css" rel="stylesheet">
+
   <!-- Angular CDN 1.6.5 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
 
-  
+
 
   <!-- Angular UI Router CDN 0.4.2 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
 </head>
 
 <body>
-  <div class="navBarBG">
-    <div class="wrapper">
-      <div class="nav-buttons-left col-md-6">
-        <img class="site-logo" src="./images/new_logo.png" ui-sref="home">
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <img class="site-logo" src="./images/new_logo.png" ui-sref="home">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+
+
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <a class="home-button btn btn-outline-success my-2 my-sm-0" ui-sref="login" role="button">Login</a>
+          <a class="home-button btn btn-outline-success my-2 my-sm-0" ui-sref="userCreate" role="button">Sign Up</a>
       </div>
-      <div class="nav-buttons-right col-md-6">
-        <ol>
-          <li class="navItem">
-            <a ui-sref="userCreate">SIGN UP</a>
-          </li>
-          <li class="navItem">
-            <a ui-sref="login">LOGIN</a>
-          </li>
-          <li class="navItem">
-            <a ui-sref="user">MY PROFILE</a>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </div>
+    </nav>
+  </header>
 
   <div ui-view></div>
 
- 
+
 
   <!-- Modules -->
   <script type="text/javascript" src="./app.js"></script>
@@ -67,6 +76,8 @@
   <!-- Controllers -->
   <script type="text/javascript" src="./controllers/userController.js"></script>
   <!-- <script type="text/javascript" src="./controllers/reservationController.js"></script> -->
+
+
 
 </body>
 

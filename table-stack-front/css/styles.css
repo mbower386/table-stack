@@ -8,97 +8,39 @@ body {
   color: black;
   font-size: 16px;
   font-weight: 400;
-  font-family: 'Lato', sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  
+  background-color: #f5f5f5;
 }
 
-.navBarBG {
-  background: #153243;
-  height: 80px;
-}
-
-.wrapper {
-  width: 80%;
-  margin: 0 auto;
-  height: 80px;
-}
-
-.navItem {
-  display: block;
-  font-weight: 700;
-  padding: 0 2.5%;
-  float: right;
-  padding-top: 15px;
-}
-
-.navItem a{
-  color: #F4F9E9;
-}
-
-.nav-buttons-left {
-  height: 100%;
-  padding-top: 20px;
-}
-
-.nav-buttons-right {
-  color: #F4F9E9;
-  padding-top: 14px;
-  height: 80px;
+.bg-dark {
+  background-color: #153243!important;
 }
 
 .site-logo {
-  height: 70%;
+  height: 30px;
 }
 
-/* original solution by https://codepen.io/Rowno/pen/Afykb */
+.home-button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
-.carousel-fade .carousel-inner .item {
-  margin-top: 0px;
+.carousel-inner {
   max-height: 400px;
-  -webkit-transition-property: opacity;
-  transition-property: opacity;
-}
-.carousel-fade .carousel-inner .item,
-.carousel-fade .carousel-inner .active.left,
-.carousel-fade .carousel-inner .active.right {
-  opacity: 0;
-}
-.carousel-fade .carousel-inner .active,
-.carousel-fade .carousel-inner .next.left,
-.carousel-fade .carousel-inner .prev.right {
-  opacity: 1;
-}
-.carousel-fade .carousel-inner .next,
-.carousel-fade .carousel-inner .prev,
-.carousel-fade .carousel-inner .active.left,
-.carousel-fade .carousel-inner .active.right {
-  left: 0;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-.carousel-fade .carousel-control {
-  z-index: 2;
+  background: linear-gradient(
+    rgba(50, 60, 85, 0.6), 
+    rgba(50, 60, 85, 0.6) 
+  );
+  transition: all 0.2s ease-out;
 }
 
-/* carousel fullscreen */
+.carousel-caption {
+  min-height: 75%;
 
-.carousel-fullscreen .carousel-inner .item {
-  height: 100vh; 
-  background-position: center center; 
-  background-repeat: no-repeat; 
-  background-size: cover;
+  display: flex;
+  align-items: center;
 }
-
-/* carousel fullscreen - vertically centered caption*/
-
-.carousel-fullscreen .carousel-caption {
-  top: 50%;  
-  bottom: auto;
-  -webkit-transform: translate(0, -50%); 
-  -ms-transform: translate(0, -50%); 
-  transform: translate(0, -50%);
-}
-
-/* overlay for better readibility of the caption  */
 
 .overlay {
   position: absolute;
@@ -111,62 +53,81 @@ body {
   transition: all 0.2s ease-out;
 }
 
-/* demo typography */
-
-h1,h2,h3,h4 {
-  font-weight: 700;
+.featurette-image {
+  max-height: 250px;
 }
-
-.super-heading {
-  font-size: 50px; 
-}
-
-.super-paragraph {
-  font-size: 20px; font-weight: 300;
-}
-
-.carousel-caption .super-paragraph a,
-.carousel-caption .super-paragraph a:hover
-{
-  color: #fff;
-}
-
-#carousel-example-generic {
-  /*
-  margin: 40px 0;
-  */
-}
-
-.demo-content {padding-top: 50px; padding-bottom: 50px; }
-
 
 /* Login Page */
-.login-form {
-  position: absolute;
-  padding: 20px;
-  min-width: 400px;
-  
-}
 
 .login-wrapper {
-  color: black;
-  width: 35%;
-  margin: 0 auto;
+  margin-top: 100px;
 }
 
-.signup-form {
-  color: black;
-  padding: 20px;
-  position: absolute;
-  min-width: 400px;
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.signup-wrapper {
-  width: 35%;
+.form-signin {
+  text-align: center!important;
+  width: 100%;
+  max-width: 350px;
+  padding: 15px;
   margin: 0 auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .red-text {
   clear: both;
   color: red;
+}
+
+.signup-wrapper {
+  width: 50%;
+  padding-top: 100px;
+  margin: 0 auto;  
+}
+
+.profile-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.top-heading {
+  height: 150px;
+}
+
+.logo-image {
+  text-align: center;
 }

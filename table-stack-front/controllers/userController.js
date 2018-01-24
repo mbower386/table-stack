@@ -9,12 +9,12 @@ app.controller("userController", function ($scope, $state, $stateParams, userSer
   if ($stateParams.id == "" || $stateParams.id == undefined || $stateParams.id == null) {
     //$scope.user = userService.getUserById($stateParams.id) // should be empty object
     $scope.submitButton = true;
-    $scope.heading = "Sign Up!"
+    $scope.heading = "Sign Up"
   }
   else {
     $scope.user = userService.getUserById($stateParams.id) // should be full object
     $scope.submitButton = false;
-    $scope.heading = "Update User!"
+    $scope.heading = "Update User"
   }
 
   // CREATE

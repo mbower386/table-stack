@@ -1,20 +1,17 @@
 <div class="container">
-  <h1 class="text-center">Login</h1>
-
   <div class="login-wrapper">
-    <div class="login-form">
-      <div class="form-group">
-        <label>Email</label>
-        <input type="text" class="form-control" placeholder="will@jiggywithit.com" ng-model="user.email">
-      </div>
+    <form class="form-signin">
+      <img class="mb-4" src="images/new_logo_2.png" alt="" width="150">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" ng-model="user.email" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" ng-model="user.password" class="form-control" placeholder="Password" required>
 
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" class="form-control" ng-model="user.password">
-      </div>
-      <p ng-show="loginError" class="red-text">Invalid user email and/or password.  Please try again.</p>
-      <button class="btn btn-success btn-lg pull-right" ng-show="submitButton" ng-click="login()">Login</button>
-    </div>
+      <button class="sign-in-button btn btn-lg btn-primary btn-block" ng-click="login()">Sign in</button>
+      <p ng-show="loginError" class="red-text">Invalid user email and/or password. Please try again.</p>
+      <p class="mt-5 mb-3 text-muted">&copy; TableStack, Inc. 2017-2018</p>
+    </form>
   </div>
 
 </div>
