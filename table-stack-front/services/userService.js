@@ -1,12 +1,12 @@
 app.service("userService", function ($state, $http) {
   // Create a users array
   var _users = [];
-  var _userId = 0;
+  var _userId = 1;
   var _currentUser = null;
   var _reservationList = [];
   var _userList = [];
   var loginError = false;
-  var _isLoginValid;
+  var _validId;
 
   // Create a users constructor
   var User = function (id, userType, restaurantName, yelpId, fullName, email, password, phoneNumber, zipCode) {
@@ -25,8 +25,8 @@ app.service("userService", function ($state, $http) {
   // Get reservation list first
   $http.get(`http://localhost:5000/api/reservations`)
     .then(function (response) {
-      console.log(response);
       _reservationList = response.data;
+      console.log(_reservationList);
     }, function (error) {
 
     })
@@ -71,23 +71,36 @@ app.service("userService", function ($state, $http) {
   this.login = function (user) {
     $http.get(`http://localhost:5000/api/users/login?email=${user.email}&password=${user.password}`)
       .then(function (response) {
-        console.log(response);
 
-        _isLoginValid = response.data;
-        checkLogin(_isLoginValid);
+        _validId = response.data;
+        checkLogin(_validId);
 
       }, function (error) {
 
       })
   }
 
-  var checkLogin = function (validLogin) {
-    if (validLogin == "true") {
-      $state.go("user")
+  var checkLogin = function (_validId) {
+    if (_validId != -1) {
+
+      $http.get(`http://localhost:5000/api/users/${_validId}`)
+        .then(function (response) {
+          getUserInfo(_validId, response);
+
+          $state.go("user", { id: _validId })
+        }, function (error) {
+
+        })
     }
     else {
       loginError = true;
     }
+  }
+
+  var getUserInfo = function (_validId, response) {
+    _currentUser = new User(response.data.id, response.data.userType, response.data.restaurantName, response.data.yelpId, response.data.fullName, response.data.email, response.data.password, response.data.phoneNumber, response.data.zipCode);
+
+    _users.push(_currentUser);
   }
 
   // REGISTER
@@ -102,8 +115,9 @@ app.service("userService", function ($state, $http) {
   this.logout = function () {
     _currentUser.status = false;
     _currentUser = null; // Set user back to null
+    console.log(_currentUser);
     console.log(_users);
-    $state.go("login") // navigate back to login page
+    $state.go("home") // navigate back to login page
   }
 
 })

@@ -27,6 +27,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: "./views/user.html",
       controller: "userController"
     })
+    .state("logout", { // SHOW
+      url: "/",
+      templateUrl: "./views/home.html",
+      controller: "userController"
+    })
 
     // Reservations
     .state("reservations", { //INDEX

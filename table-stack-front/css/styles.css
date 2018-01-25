@@ -125,9 +125,15 @@ body {
 }
 
 .top-heading {
-  height: 150px;
+  height: 100px;
 }
 
 .logo-image {
   text-align: center;
+}
+.btn-outline-success {
+  color: #28a745!important;
+  background-color: transparent;
+  background-image: none;
+  border-color: #28a745;
 }

@@ -45,20 +45,30 @@
 
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <img class="site-logo" src="./images/new_logo.png" ui-sref="home">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
 
+      <div class="container d-flex justify-content-between" ng-controller="navBarController">
+        <img class="site-logo" src="./images/new_logo.png" ui-sref="home">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
 
-        </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <a class="home-button btn btn-outline-success my-2 my-sm-0" ui-sref="login" role="button">Login</a>
-          <a class="home-button btn btn-outline-success my-2 my-sm-0" ui-sref="userCreate" role="button">Sign Up</a>
+          </ul>
+          <form class="form-inline mt-2 mt-md-0">
+
+            <a class="home-button btn btn-outline-success my-2 my-sm-0" ui-sref="user" role="button" ng-show="userService.returnUser() != null">My Profile</a>
+
+            <a class="home-button btn btn-outline-success my-2 my-sm-0" ng-click="loggingOut()" role="button" ng-show="userService.returnUser() != null">Logout</a>
+
+            <a class="home-button btn btn-outline-success my-2 my-sm-0" ui-sref="login" role="button" ng-show="userService.returnUser() == null">Login</a>
+
+            <a class="home-button btn btn-outline-success my-2 my-sm-0" ui-sref="userCreate" role="button"ng-show="userService.returnUser() == null">Sign Up</a>
+          </form>
+        </div>
       </div>
+
     </nav>
   </header>
 
@@ -75,6 +85,7 @@
 
   <!-- Controllers -->
   <script type="text/javascript" src="./controllers/userController.js"></script>
+  <script type="text/javascript" src="./controllers/navBarController.js"></script>
   <!-- <script type="text/javascript" src="./controllers/reservationController.js"></script> -->
 
 

@@ -55,7 +55,7 @@ namespace table_stack.Controllers
         }
 
         [HttpGet ("login")]
-        public string Login (string email, string password)
+        public int Login (string email, string password)
         {
             foreach (User u in _context.Users)
             {
@@ -63,12 +63,12 @@ namespace table_stack.Controllers
                 {
                     if (u.password == password)
                     {
-                        return "true";
+                        return u.Id;
                     }
                 }
             }
 
-            return "false";
+            return -1;
         }
 
         // Create new user
