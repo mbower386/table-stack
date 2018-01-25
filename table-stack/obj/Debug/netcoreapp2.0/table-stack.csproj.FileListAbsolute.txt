@@ -8,3 +8,13 @@
 /Users/matthewbower/Desktop/table-stack/table-stack/obj/Debug/netcoreapp2.0/table-stack.AssemblyInfo.cs
 /Users/matthewbower/Desktop/table-stack/table-stack/obj/Debug/netcoreapp2.0/table-stack.dll
 /Users/matthewbower/Desktop/table-stack/table-stack/obj/Debug/netcoreapp2.0/table-stack.pdb
+D:\CS_Projects\RedwoodCodeAcademy\Projects\table-stack\table-stack\bin\Debug\netcoreapp2.0\table-stack.deps.json
+D:\CS_Projects\RedwoodCodeAcademy\Projects\table-stack\table-stack\bin\Debug\netcoreapp2.0\table-stack.runtimeconfig.json
+D:\CS_Projects\RedwoodCodeAcademy\Projects\table-stack\table-stack\bin\Debug\netcoreapp2.0\table-stack.runtimeconfig.dev.json
+D:\CS_Projects\RedwoodCodeAcademy\Projects\table-stack\table-stack\bin\Debug\netcoreapp2.0\table-stack.dll
+D:\CS_Projects\RedwoodCodeAcademy\Projects\table-stack\table-stack\bin\Debug\netcoreapp2.0\table-stack.pdb
+D:\CS_Projects\RedwoodCodeAcademy\Projects\table-stack\table-stack\obj\Debug\netcoreapp2.0\table-stack.csproj.CoreCompileInputs.cache
+D:\CS_Projects\RedwoodCodeAcademy\Projects\table-stack\table-stack\obj\Debug\netcoreapp2.0\table-stack.AssemblyInfoInputs.cache
+D:\CS_Projects\RedwoodCodeAcademy\Projects\table-stack\table-stack\obj\Debug\netcoreapp2.0\table-stack.AssemblyInfo.cs
+D:\CS_Projects\RedwoodCodeAcademy\Projects\table-stack\table-stack\obj\Debug\netcoreapp2.0\table-stack.dll
+D:\CS_Projects\RedwoodCodeAcademy\Projects\table-stack\table-stack\obj\Debug\netcoreapp2.0\table-stack.pdb
