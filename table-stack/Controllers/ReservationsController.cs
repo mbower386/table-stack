@@ -21,9 +21,9 @@ namespace table_stack.Controllers
 
             if (_context.Reservations.Count () == 0)
             {
-                _context.Reservations.Add (new Reservation () { customerName = "Matthew Bower", phoneNumber = "1234567890", partySize = 4, waitTime = 25 });
+                _context.Reservations.Add (new Reservation () { customerName = "Matthew Bower", phoneNumber = "1234567890", partySize = 4, waitTime = 20 });
 
-                _context.Reservations.Add (new Reservation () { customerName = "Charles Bower", phoneNumber = "9493386864", partySize = 4, waitTime = 25 });
+                _context.Reservations.Add (new Reservation () { customerName = "Charles Bower", phoneNumber = "1234567890", partySize = 4, waitTime = 25 });
 
                 _context.Reservations.Add (new Reservation () { customerName = "Elon Musk", phoneNumber = "1234567890", partySize = 1, waitTime = 5 });
 
@@ -158,7 +158,7 @@ namespace table_stack.Controllers
             TwilioClient.Init (accoundSid, authToken);
 
             var toPhoneNumber = new PhoneNumber (phoneNumber);
-            var fromPhoneNumber = new PhoneNumber ("+1234567890");
+            var fromPhoneNumber = new PhoneNumber ("");
 
             var message = MessageResource.Create (
                 to: toPhoneNumber,
