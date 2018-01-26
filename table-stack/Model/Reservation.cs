@@ -6,9 +6,9 @@ namespace table_stack.Controllers
     {
         [Key]
         public int Id { get; set; }
-        public int userId { get; set; }
+        public string customerName { get; set; }
+        public string phoneNumber { get; set; }
         public int partySize { get; set; }
-        public string dateReserved { get; set; }
-        public int waitTime { get; set;}
+        public int waitTime { get; set; }
     }
 }

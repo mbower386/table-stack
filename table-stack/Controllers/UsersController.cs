@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace table_stack.Controllers
 {
@@ -16,19 +17,57 @@ namespace table_stack.Controllers
         {
             _context = context;
 
+            if (_context.Reservations.Count () == 0)
+            {
+                _context.Reservations.Add (new Reservation () { customerName = "Matthew Bower", phoneNumber = "1234567890", partySize = 4, waitTime = 20 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "Charles Bower", phoneNumber = "9493386864", partySize = 4, waitTime = 25 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "Elon Musk", phoneNumber = "1234567890", partySize = 1, waitTime = 5 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "Jeff Bezos", phoneNumber = "1234567890", partySize = 2, waitTime = 20 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "Tim Cook", phoneNumber = "1234567890", partySize = 5, waitTime = 25 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "Jack Bauer", phoneNumber = "1234567890", partySize = 4, waitTime = 15 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "Chuck Norris", phoneNumber = "1234567890", partySize = 1, waitTime = 5 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "Steven Seagal", phoneNumber = "1234567890", partySize = 2, waitTime = 20 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "John McClane", phoneNumber = "1234567890", partySize = 5, waitTime = 25 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "John Rambo", phoneNumber = "1234567890", partySize = 4, waitTime = 15 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "Arnold Schwarzenegger", phoneNumber = "1234567890", partySize = 1, waitTime = 5 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "Jason Statham", phoneNumber = "1234567890", partySize = 2, waitTime = 20 });
+
+                _context.Reservations.Add (new Reservation () { customerName = "James Bond", phoneNumber = "1234567890", partySize = 5, waitTime = 25 });
+
+                _context.SaveChanges ();
+            }
+
             if (_context.Users.Count () == 0)
             {
-                _context.Users.Add (new User () { Id = ++id, userType = "customer", restaurantName = "", yelpId = "", fullName = "Matthew Bower", email = "mbower386@gmail.com", password = "password", phoneNumber = "9493386876", zipCode = "92691" });
+                _context.Users.Add (new User () { Id = ++id, userType = "restaurant", restaurantName = "Some Really Great Restaurant", yelpId = "", fullName = "Some Really Great Restaurant", email = "dude@greatfood.com", password = "greatgrub", phoneNumber = "4155551234", zipCode = "81234", userReservations = new List<Reservation> () });
                 _context.SaveChanges ();
 
-                _context.Users.Add (new User () { Id = ++id, userType = "customer", restaurantName = "", yelpId = "", fullName = "Elon Musk", email = "musk@spacex.com", password = "thefuture", phoneNumber = "2135551234", zipCode = "91210" });
-                _context.SaveChanges ();
+                foreach (User u in _context.Users)
+                {
+                    List<Reservation> tempList = new List<Reservation> ();
+                    foreach (Reservation r in _context.Reservations)
+                    {
+                        if (u.Id == 1)
+                        {
+                            tempList.Add (r);
+                        }
 
-                _context.Users.Add (new User () { Id = ++id, userType = "customer", restaurantName = "", yelpId = "", fullName = "Kim Jong Un", email = "kim@bestkorea.com", password = "rocketman", phoneNumber = "1235551234", zipCode = "91234" });
-                _context.SaveChanges ();
+                    }
 
-                _context.Users.Add (new User () { Id = ++id, userType = "customer", restaurantName = "", yelpId = "", fullName = "Jeff Bezos", email = "jeff@amazon.com", password = "bookseller", phoneNumber = "4155551234", zipCode = "81234" });
-                _context.SaveChanges ();
+                    u.userReservations = tempList;
+                    _context.SaveChanges ();
+                }
             }
         }
 
@@ -43,7 +82,7 @@ namespace table_stack.Controllers
         [HttpGet ("{id}")]
         public User Get (int id)
         {
-            foreach (User u in _context.Users)
+            foreach (User u in _context.Users.Include (u => u.userReservations))
             {
                 if (u.Id == id)
                 {

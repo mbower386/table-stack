@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace table_stack.Controllers
 {
@@ -18,41 +21,31 @@ namespace table_stack.Controllers
 
             if (_context.Reservations.Count () == 0)
             {
-                _context.Reservations.Add (new Reservation () { userId = 1, partySize = 4, dateReserved = "Thu Jan 18 2018 17:00:00 GMT-0700 (PDT)", waitTime = 25 });
+                _context.Reservations.Add (new Reservation () { customerName = "Matthew Bower", phoneNumber = "1234567890", partySize = 4, waitTime = 25 });
 
-                _context.Reservations.Add (new Reservation () { userId = 3, partySize = 3, dateReserved = "Wed Jan 17 2018 12:00:00 GMT-0700 (PDT)", waitTime = 20 });
+                _context.Reservations.Add (new Reservation () { customerName = "Charles Bower", phoneNumber = "9493386864", partySize = 4, waitTime = 25 });
 
-                _context.Reservations.Add (new Reservation () { userId = 2, partySize = 2, dateReserved = "Tues Jan 16 2018 09:00:00 GMT-0700 (PDT)", waitTime = 15 });
+                _context.Reservations.Add (new Reservation () { customerName = "Elon Musk", phoneNumber = "1234567890", partySize = 1, waitTime = 5 });
 
-                _context.Reservations.Add (new Reservation () { userId = 3, partySize = 4, dateReserved = "Sun Jan 21 2018 12:05:00 GMT-0700 (PDT)", waitTime = 25 });
+                _context.Reservations.Add (new Reservation () { customerName = "Jeff Bezos", phoneNumber = "1234567890", partySize = 2, waitTime = 20 });
 
-                _context.Reservations.Add (new Reservation () { userId = 4, partySize = 3, dateReserved = "Mon Jan 22 2018 12:00:00 GMT-0700 (PDT)", waitTime = 20 });
+                _context.Reservations.Add (new Reservation () { customerName = "Tim Cook", phoneNumber = "1234567890", partySize = 5, waitTime = 25 });
 
-                _context.Reservations.Add (new Reservation () { userId = 1, partySize = 2, dateReserved = "Tues Jan 16 2018 09:00:00 GMT-0700 (PDT)", waitTime = 10 });
+                _context.Reservations.Add (new Reservation () { customerName = "Jack Bauer", phoneNumber = "1234567890", partySize = 4, waitTime = 15 });
 
-                _context.Reservations.Add (new Reservation () { userId = 1, partySize = 4, dateReserved = "Thu Jan 18 2018 17:00:00 GMT-0700 (PDT)", waitTime = 25 });
+                _context.Reservations.Add (new Reservation () { customerName = "Chuck Norris", phoneNumber = "1234567890", partySize = 1, waitTime = 5 });
 
-                _context.Reservations.Add (new Reservation () { userId = 3, partySize = 3, dateReserved = "Wed Jan 17 2018 12:00:00 GMT-0700 (PDT)", waitTime = 20 });
+                _context.Reservations.Add (new Reservation () { customerName = "Steven Seagal", phoneNumber = "1234567890", partySize = 2, waitTime = 20 });
 
-                _context.Reservations.Add (new Reservation () { userId = 2, partySize = 2, dateReserved = "Tues Jan 16 2018 09:00:00 GMT-0700 (PDT)", waitTime = 15 });
+                _context.Reservations.Add (new Reservation () { customerName = "John McClane", phoneNumber = "1234567890", partySize = 5, waitTime = 25 });
 
-                _context.Reservations.Add (new Reservation () { userId = 3, partySize = 4, dateReserved = "Sun Jan 21 2018 12:05:00 GMT-0700 (PDT)", waitTime = 25 });
+                _context.Reservations.Add (new Reservation () { customerName = "John Rambo", phoneNumber = "1234567890", partySize = 4, waitTime = 15 });
 
-                _context.Reservations.Add (new Reservation () { userId = 4, partySize = 3, dateReserved = "Mon Jan 22 2018 12:00:00 GMT-0700 (PDT)", waitTime = 20 });
+                _context.Reservations.Add (new Reservation () { customerName = "Arnold Schwarzenegger", phoneNumber = "1234567890", partySize = 1, waitTime = 5 });
 
-                _context.Reservations.Add (new Reservation () { userId = 1, partySize = 2, dateReserved = "Tues Jan 16 2018 09:00:00 GMT-0700 (PDT)", waitTime = 10 });
+                _context.Reservations.Add (new Reservation () { customerName = "Jason Statham", phoneNumber = "1234567890", partySize = 2, waitTime = 20 });
 
-                _context.Reservations.Add (new Reservation () {  userId = 1, partySize = 4, dateReserved = "Thu Jan 18 2018 17:00:00 GMT-0700 (PDT)", waitTime = 25 });
-
-                _context.Reservations.Add (new Reservation () { userId = 3, partySize = 3, dateReserved = "Wed Jan 17 2018 12:00:00 GMT-0700 (PDT)", waitTime = 20 });
-
-                _context.Reservations.Add (new Reservation () {  userId = 2, partySize = 2, dateReserved = "Tues Jan 16 2018 09:00:00 GMT-0700 (PDT)", waitTime = 15 });
-
-                _context.Reservations.Add (new Reservation () {  userId = 3, partySize = 4, dateReserved = "Sun Jan 21 2018 12:05:00 GMT-0700 (PDT)", waitTime = 25 });
-
-                _context.Reservations.Add (new Reservation () {  userId = 4, partySize = 3, dateReserved = "Mon Jan 22 2018 12:00:00 GMT-0700 (PDT)", waitTime = 20 });
-
-                _context.Reservations.Add (new Reservation () {  userId = 1, partySize = 2, dateReserved = "Tues Jan 16 2018 09:00:00 GMT-0700 (PDT)", waitTime = 10 });
+                _context.Reservations.Add (new Reservation () { customerName = "James Bond", phoneNumber = "1234567890", partySize = 5, waitTime = 25 });
 
                 _context.SaveChanges ();
             }
@@ -78,6 +71,14 @@ namespace table_stack.Controllers
             }
 
             return null;
+        }
+
+        [HttpGet ("userReservations")]
+        public List<Reservation> Get (string userId)
+        {
+            List<Reservation> userReservations = new List<Reservation> ();
+
+            return userReservations;
         }
 
         // Create new reservation
@@ -126,6 +127,45 @@ namespace table_stack.Controllers
             }
 
             return "reservation not found";
+        }
+
+        [HttpGet ("sendMessage")]
+        public ActionResult SendSms (string smsCode, string phoneNumber, string fullName, string partySize, string waitTime)
+        {
+            string textMessage = "";
+
+            switch (smsCode)
+            {
+                case "1":
+                    textMessage = "Hi " + fullName + "!  You just reserved a table with us!  You have " + partySize + " in your party, and your wait time is " + waitTime + " minutes.";
+                    break;
+                case "2":
+                    textMessage = "Hi " + fullName + "!  Your table is almost ready!  Please head back to be seated.";
+                    break;
+                case "3":
+                    textMessage = "Hi " + fullName + "!  You just updated your reservation!  You now have " + partySize + " in your party, and your wait time is " + waitTime + " minutes.";
+                    break;
+                case "4":
+                    textMessage = "Hi " + fullName + "!  You just cancelled your reservation!  Sorry to see you go!";
+                    break;
+                default:
+                    break;
+            }
+
+            var accoundSid = "";
+            var authToken = "";
+
+            TwilioClient.Init (accoundSid, authToken);
+
+            var toPhoneNumber = new PhoneNumber (phoneNumber);
+            var fromPhoneNumber = new PhoneNumber ("+1234567890");
+
+            var message = MessageResource.Create (
+                to: toPhoneNumber,
+                from: fromPhoneNumber,
+                body: textMessage);
+
+            return Content (message.Sid);
         }
     }
 }

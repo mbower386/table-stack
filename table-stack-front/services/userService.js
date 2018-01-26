@@ -22,14 +22,11 @@ app.service("userService", function ($state, $http) {
     this.reservations = [];
   }
 
-  // Get reservation list first
-  $http.get(`http://localhost:5000/api/reservations`)
-    .then(function (response) {
-      _reservationList = response.data;
-      console.log(_reservationList);
-    }, function (error) {
+  // Get all user reservations
+  var getUserReservations = function () {
 
-    })
+
+  }
 
   // GET all
   this.getUsers = function () {
@@ -40,10 +37,16 @@ app.service("userService", function ($state, $http) {
   this.getUserById = function (id) {
     if (id == "" || id == undefined || id == null) {
       var user = {
-        name: "",
+        id: "",
+        userType: "",
+        restaurantName: "",
+        yelpId: "",
+        fullName: "",
         email: "",
         password: "",
-        status: false
+        phoneNumber: "",
+        zipCode: "",
+        reservations: [],
       }
       return user;
     }
@@ -58,6 +61,12 @@ app.service("userService", function ($state, $http) {
 
   this.returnUser = function () {
     return _currentUser;
+  }
+
+  this.returnReservationList = function () {
+    // Get reservation list first
+    return $http.get(`http://localhost:5000/api/reservations`)
+
   }
 
   // CREATE
@@ -98,9 +107,12 @@ app.service("userService", function ($state, $http) {
   }
 
   var getUserInfo = function (_validId, response) {
-    _currentUser = new User(response.data.id, response.data.userType, response.data.restaurantName, response.data.yelpId, response.data.fullName, response.data.email, response.data.password, response.data.phoneNumber, response.data.zipCode);
+    getUserReservations();
+
+    _currentUser = new User(response.data.id, response.data.userType, response.data.restaurantName, response.data.yelpId, response.data.fullName, response.data.email, response.data.password, response.data.phoneNumber, response.data.zipCode, _reservationList);
 
     _users.push(_currentUser);
+    //console.log(_currentUser);
   }
 
   // REGISTER
@@ -120,4 +132,29 @@ app.service("userService", function ($state, $http) {
     $state.go("home") // navigate back to login page
   }
 
+  this.notifyUser = function (smsCode, reservation) {
+    console.log(reservation.phoneNumber);
+    $http.get(`http://localhost:5000/api/reservations/sendMessage?smsCode=${smsCode}&phoneNumber=${reservation.phoneNumber}&fullName=${reservation.customerName}&partySize=${reservation.partySize}&waitTime=${reservation.waitTime}`)
+      .then(function (response) {
+
+        $state.go("user")
+      }, function (error) {
+
+      })
+  }
+
+  this.confirmCustomer = function (fullName, phoneNumber, partySize, waitTime) {
+    console.log(reservation.phoneNumber);
+    $http.get(`http://localhost:5000/api/reservations/sendMessage?smsCode=${"1"}&phoneNumber=${phoneNumber}&fullName=${customerName}&partySize=${partySize}&waitTime=${waitTime}`)
+      .then(function (response) {
+
+        $state.go("user")
+      }, function (error) {
+
+      })
+  }
+
+  this.deleteReservation = function (id) {
+
+  }
 })

@@ -1,6 +1,12 @@
 app.controller("userController", function ($scope, $state, $stateParams, userService) {
+  $scope.id = 100;
   $scope.errorMessage = false;
   $scope.user = userService.returnUser();
+  userService.returnReservationList()
+    .then(function (response) {
+      $scope.reservationList = response.data;
+    })
+  
 
   // GET all
   $scope.users = userService.getUsers()
@@ -39,10 +45,26 @@ app.controller("userController", function ($scope, $state, $stateParams, userSer
     }
   }
 
+  $scope.notifyUser = function (smsCode, reservation) {
+    userService.notifyUser(smsCode, reservation)
+  }
 
   // LOGOUT
   $scope.logout = function () {
     userService.logout()
   }
 
+  $scope.deleteReservation = function (id) {
+    console.log($scope.reservationList[id]);
+    for (var i = 0; i < $scope.reservationList.length; i++) {
+      if ($scope.reservationList[i].id == id) {
+        $scope.reservationList.splice(i, 1);
+      }
+    }
+  }
+
+  $scope.confirmReservation = function (fullName, phoneNumber, partySize, waitTime) {
+    userService.confirmCustomer(fullName, phoneNumber, partySize, waitTime);
+    $scope.reservationList.push($scope.id++, fullName, phoneNumber, partySize, waitTime);
+  }
 })
